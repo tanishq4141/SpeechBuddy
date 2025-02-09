@@ -7,16 +7,19 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const record = require('node-record-lpcm16').record;
 const speech = require('@google-cloud/speech');
 
-const app = express();
-const port = 3000;
-
 // Load API Key from .env
+process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const client = new speech.SpeechClient();
 
+const app = express();
+const port = 3000;
+
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Serve frontend files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rest of your code...
 
 // Function to record and transcribe speech
 async function recordText() {
