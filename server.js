@@ -7,7 +7,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const record = require('node-record-lpcm16').record;
 const speech = require('@google-cloud/speech');
 
-// Load API Key from .env
+
 process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const client = new speech.SpeechClient();
@@ -19,7 +19,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rest of your code...
 
 // Function to record and transcribe speech
 async function recordText() {
@@ -89,7 +88,7 @@ function textToSpeech(text) {
     say.speak(text);
 }
 
-// Route to start recording and return transcribed text
+
 app.post('/record', async (req, res) => {
     try {
         const transcript = await recordText();
@@ -99,7 +98,7 @@ app.post('/record', async (req, res) => {
     }
 });
 
-// Route to get AI response
+
 app.post('/ai-response', async (req, res) => {
     try {
         const response = await geminiOutput(req.body.text);
@@ -110,5 +109,5 @@ app.post('/ai-response', async (req, res) => {
     }
 });
 
-// Start server
+
 app.listen(port, () => console.log(`✅ Server running on http://localhost:${port}`));
