@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeechBuddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🔵 SpeechBuddy</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#" class="active">Record</a>
+            <a href="#">Results</a>
+            <button class="sign-up">Sign Up</button>
+            <button class="help">❓ Help</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Recording Controls</h2>
+        <button id="recordButton">
+            <img class="micIcon" src="Designer.jpeg" id="micIcon" alt="Microphone">
+            <p>Press to Record</p>
+        </button>
+
+        <h3>Transcription Display</h3>
+        <input type="text" id="transcription" placeholder="Real-time transcription of speech will appear here..." readonly>
+
+        <h3>AI Response Area</h3>
+        <div id="chatArea">
+            <!-- Chat messages will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <footer>
+        <input type="text" id="messageInput" placeholder="Type a message">
+        <button id="sendMessage">➤</button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
