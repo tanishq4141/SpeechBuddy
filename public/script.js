@@ -10,7 +10,7 @@ async function startRecording() {
         transcription.placeholder = "Listening...";
         micIcon.src = "Designer.jpeg";
 
-        // Send request to backend to start recording
+        
         const response = await fetch('http://localhost:3000/record', { method: 'POST' });
         const data = await response.json();
 
@@ -18,7 +18,6 @@ async function startRecording() {
             transcription.value = data.transcript;
             addChatMessage(data.transcript, "user");
 
-            // Send user text to AI for response
             generateAIResponse(data.transcript);
         } else {
             transcription.placeholder = "No speech detected.";
@@ -35,7 +34,7 @@ recordButton.addEventListener("click", startRecording);
 
 async function generateAIResponse(userInput) {
     try {
-        addChatMessage("Thinking...", "ai"); // Show typing indicator
+        addChatMessage("Thinking...", "ai"); 
 
         const response = await fetch('http://localhost:3000/ai-response', {
             method: 'POST',
@@ -44,7 +43,7 @@ async function generateAIResponse(userInput) {
         });
 
         const data = await response.json();
-        document.querySelector(".ai-message:last-child").remove(); // Remove "Thinking..."
+        document.querySelector(".ai-message:last-child").remove(); 
         addChatMessage(data.response, "ai");
     } catch (error) {
         console.error("AI response error:", error);
